@@ -1,0 +1,10 @@
+INSERT INTO products (name, stock, price) VALUES ('iPhone 14', 50, 799.99);
+INSERT INTO products (name, stock, price) VALUES ('Samsung Galaxy S23', 40, 749.99);
+INSERT INTO products (name, stock, price) VALUES ('Google Pixel 8', 35, 699.99);
+INSERT INTO products (name, stock, price) VALUES ('OnePlus 11', 30, 649.99);
+INSERT INTO products (name, stock, price) VALUES ('MacBook Air M2', 20, 1199.99);
+INSERT INTO products (name, stock, price) VALUES ('Dell XPS 13', 25, 999.99);
+INSERT INTO products (name, stock, price) VALUES ('Sony WH-1000XM5 Headphones', 60, 399.99);
+INSERT INTO products (name, stock, price) VALUES ('Apple Watch Series 9', 45, 499.99);
+INSERT INTO products (name, stock, price) VALUES ('Logitech MX Master 3 Mouse', 70, 99.99);
+INSERT INTO products (name, stock, price) VALUES ('Samsung 27-inch Monitor', 15, 299.99);
