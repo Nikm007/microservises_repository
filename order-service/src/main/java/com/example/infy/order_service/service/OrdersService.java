@@ -23,24 +23,10 @@ public class OrdersService {
 
     public Page<OrderRequestDto> getAllOrders(){
         Pageable pageable = PageRequest.of(0, 20);
-
         Page<Orders> ordersPage = ordersRepository.findAll(pageable);
 
-        Page<OrderRequestDto> dtoPage = ordersPage.map(order -> {
-
-            OrderRequestDto dto = modelMapper.map(order, OrderRequestDto.class);
-
-            List<OrderRequestItemDto> items =
-                    order.getOrderItemList()
-                            .stream()
-                            .map(item -> modelMapper.map(item, OrderRequestItemDto.class))
-                            .toList();
-
-            dto.setOrderRequestItemDtoList(items);
-            return dto;
-
-        });
-    return dtoPage;
+        return ordersPage.map(order ->
+                modelMapper.map(order, OrderRequestDto.class));
 
 }
 
@@ -50,14 +36,7 @@ public class OrdersService {
                 .orElseThrow(() -> new RuntimeException("order not found for id " + id));
 
         OrderRequestDto dto = modelMapper.map(order, OrderRequestDto.class);
-
-        List<OrderRequestItemDto> items =
-                order.getOrderItemList()
-                        .stream()
-                        .map(item -> modelMapper.map(item, OrderRequestItemDto.class))
-                        .toList();
-
-        dto.setOrderRequestItemDtoList(items);
-
         return dto;
-    }}
+    }
+
+}
