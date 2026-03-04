@@ -1,4 +1,7 @@
 HELP.md
+
+# Spring config (avoid pushing secrets)
+**/application.properties
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
