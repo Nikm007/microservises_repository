@@ -28,6 +28,12 @@ public class OrdersController {
 
     private final ModelMapper modelMapper;
     private final OrdersService ordersService;
+
+    @GetMapping("/fetchOrders")
+    public String helloFetchOrder(){
+        return "Hello from orders service";
+    }
+
     @GetMapping("/")
     public ResponseEntity<Page<OrderRequestDto>> getAllOrders(){
         Page<OrderRequestDto> orderRequestDtos = ordersService.getAllOrders();
