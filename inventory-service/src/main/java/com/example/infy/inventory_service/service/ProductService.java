@@ -1,5 +1,7 @@
 package com.example.infy.inventory_service.service;
 
+import com.example.infy.inventory_service.dto.OrderRequestDto;
+import com.example.infy.inventory_service.dto.OrderRequestItemDto;
 import com.example.infy.inventory_service.dto.ProductDTO;
 import com.example.infy.inventory_service.entity.Product;
 import com.example.infy.inventory_service.repository.ProductRepository;
@@ -36,4 +38,25 @@ public class ProductService {
        );
 
    }
+
+    public Double reduceStocks(OrderRequestDto orderRequestDto) {
+        Double price = 0.0;
+       for (OrderRequestItemDto orderRequestItemDto : orderRequestDto.getItems()){
+
+           Integer quantity = orderRequestItemDto.getQuantity();
+           Long productId = orderRequestItemDto.getProductId();
+
+          Product product = productRepository.findById(productId).orElseThrow(
+                   ()-> new RuntimeException("product not found with id : "+ productId)
+           );
+           if(quantity> product.getStock()){
+               throw new RuntimeException("Product is out of stock");
+           }
+
+           product.setStock(product.getStock()-quantity);
+           productRepository.save(product);
+           price = price + quantity*product.getPrice();
+       }
+       return price;
+    }
 }
